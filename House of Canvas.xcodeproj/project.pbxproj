@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A7E899C2C3CEAE5006C11A7 /* Entry Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E899B2C3CEAE5006C11A7 /* Entry Screen.swift */; };
 		2A9735DA2B47CD7100A76648 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9735D92B47CD7100A76648 /* Login.swift */; };
 		2AA424C82B4102F100E82BB6 /* House_of_CanvasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA424C72B4102F100E82BB6 /* House_of_CanvasApp.swift */; };
 		2AA424CA2B4102F100E82BB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA424C92B4102F100E82BB6 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A7E899B2C3CEAE5006C11A7 /* Entry Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry Screen.swift"; sourceTree = "<group>"; };
 		2A9735D92B47CD7100A76648 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		2AA424C42B4102F100E82BB6 /* House of Canvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "House of Canvas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA424C72B4102F100E82BB6 /* House_of_CanvasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House_of_CanvasApp.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		2AA424C62B4102F100E82BB6 /* House of Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				2A7E899B2C3CEAE5006C11A7 /* Entry Screen.swift */,
 				2A9735D92B47CD7100A76648 /* Login.swift */,
 				2AA424C72B4102F100E82BB6 /* House_of_CanvasApp.swift */,
 				2AA424C92B4102F100E82BB6 /* ContentView.swift */,
@@ -146,6 +149,7 @@
 				2AA424CA2B4102F100E82BB6 /* ContentView.swift in Sources */,
 				2AA424C82B4102F100E82BB6 /* House_of_CanvasApp.swift in Sources */,
 				2AA424D62B41033200E82BB6 /* RequestAQuote.swift in Sources */,
+				2A7E899C2C3CEAE5006C11A7 /* Entry Screen.swift in Sources */,
 				2A9735DA2B47CD7100A76648 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
