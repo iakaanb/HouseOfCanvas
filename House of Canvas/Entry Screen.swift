@@ -15,7 +15,7 @@ struct EntryScreen: View {
 //                    .brightness(9)
                     .opacity(0.5)
                     .ignoresSafeArea()
-                VStack (spacing: 70) {
+                VStack (spacing: 50) {
                     Image("Logo")
                         .resizable()
                         .frame(width: 345, height: 245)
@@ -33,9 +33,6 @@ struct EntryScreen: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .inset(by: 1)
                                 .stroke(.black, lineWidth: 2.5))
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
-                        
                         NavigationLink(destination: Login()) {
                             Text("LOGIN")
                         }
@@ -48,12 +45,11 @@ struct EntryScreen: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .inset(by: 1)
                                 .stroke(.black, lineWidth: 2.5))
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
                     }
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
