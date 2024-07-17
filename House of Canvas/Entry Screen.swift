@@ -21,7 +21,7 @@ struct EntryScreen: View {
                         .frame(width: 345, height: 245)
                         .cornerRadius(5)
                     HStack (spacing: 30) {
-                        NavigationLink(destination: Login()) {
+                        NavigationLink(destination: SignUp()) {
                             Text("SIGN UP")
                         }
                         .foregroundColor(.black)

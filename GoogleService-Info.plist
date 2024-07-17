@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBL1lSrNym7hHvNHM5Lpz_oDzKx-hWeT_Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>546156701218</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Personal.House-of-Canvas</string>
+	<key>PROJECT_ID</key>
+	<string>houseofcanvas-1849f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>houseofcanvas-1849f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:546156701218:ios:4eb2e9d59009a96fd6cc7b</string>
+</dict>
+</plist>

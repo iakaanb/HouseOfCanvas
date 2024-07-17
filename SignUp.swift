@@ -74,7 +74,7 @@ struct SignUp: View {
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                TextField("  Password", text: $password)
+                                SecureField("  Password", text: $password)
 //                                    .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
@@ -95,15 +95,16 @@ struct SignUp: View {
 ////                                            Text("CREATE AN ACCOUNT")
 //                                        }
                         
-                        NavigationLink(destination: Login()) {
-                            Text("CREATE AN ACCOUNT")
+                        NavigationLink(destination: Home()) {
+//                            Text("CREATE AN ACCOUNT")
 //                            Task {
 
 //                            }
-                            Button ("") {
+                            Button ("CREATE AN ACCOUNT") {
 //                                Task {
                                     addUser(fullName: self.fullName, username: self.username, password: self.password)
 //                                }
+//                                Text("hey")
                             }
                         }
                         .foregroundColor(.black)
