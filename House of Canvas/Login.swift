@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Login: View {
-    @State private var user: String = "   "
+    @State private var email: String = "   "
     @State private var password: String = "   "
+    @State private var users: [User] = []
     
     var body: some View {
         NavigationView {
@@ -40,11 +42,11 @@ struct Login: View {
                                         .inset(by: 2.50)
                                         .stroke(Color(red: 0.64, green: 0.61, blue: 0.53), lineWidth: 5.00))
                             VStack (spacing: 14) {
-                                Text("Username")
+                                Text("Email Address")
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                TextField("  Username", text: $user)
+                                TextField("  Email Address", text: $email)
                                     .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
@@ -70,8 +72,15 @@ struct Login: View {
                                             .stroke(.black, lineWidth: 1))
                             }
                     }
-                        NavigationLink(destination: Login()) {
-                            Text("LOGIN")
+                        NavigationLink(destination: Home()) {
+//                            Text("LOGIN")
+                            
+                            Button ("LOGIN") {
+//                                Task {
+                                    login(email: self.email, password: self.password)
+//                                }
+//                                Text("hey")
+                            }
                         }
                         .foregroundColor(.black)
                         .font(Font.title2.weight(.bold))
@@ -91,6 +100,38 @@ struct Login: View {
         }
         Spacer(minLength: 27)
         .navigationBarBackButtonHidden(true)
+    }
+//    func fetchUser() async {
+////        guard let uid = Auth.auth().currentUser?.uid else { return }
+////        guard let snapshot = try? await Firestore.firestore().collection("Users").document(uid).getDocument() else { return }
+////        self.currentUser = try? snapshot.data(as: User.self)
+//        users.removeAll()
+//        let usersDatabase = Firestore.firestore()
+//        let reference = usersDatabase.collection("Users")
+//        reference.getDocuments { snapshot, error in
+//            guard error == nil else {
+//                print (error!.localizedDescription)
+//                return
+//            }
+//            if let snapshot = snapshot {
+//                for document in snapshot.documents {
+//                    let data = document.data()
+//                    
+//                    let id = data["id"] as? String ?? ""
+//                    
+//                    let user = User(fullName: fullName, email: email, password: password)
+//                    self.users.append(user)
+//                }
+//            }
+//        }
+//        
+//    }
+    
+    func login(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }}
     }
 }
 

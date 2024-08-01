@@ -21,6 +21,7 @@
 		2AA424CC2B4102F300E82BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA424CB2B4102F300E82BB6 /* Assets.xcassets */; };
 		2AA424CF2B4102F300E82BB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA424CE2B4102F300E82BB6 /* Preview Assets.xcassets */; };
 		2AA424D62B41033200E82BB6 /* RequestAQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA424D52B41033200E82BB6 /* RequestAQuote.swift */; };
+		2AFBAE412C598E100047B84D /* Profile Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFBAE402C598E0F0047B84D /* Profile Screen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		2AA424CB2B4102F300E82BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AA424CE2B4102F300E82BB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AA424D52B41033200E82BB6 /* RequestAQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAQuote.swift; sourceTree = "<group>"; };
+		2AFBAE402C598E0F0047B84D /* Profile Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile Screen.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 		2AA424BB2B4102F100E82BB6 = {
 			isa = PBXGroup;
 			children = (
-				2A554C562C3E1E7C00D5437F /* SignUp.swift */,
+				2AFBAE402C598E0F0047B84D /* Profile Screen.swift */,
 				2AA424C62B4102F100E82BB6 /* House of Canvas */,
 				2AA424C52B4102F100E82BB6 /* Products */,
 				2A1AAF712C46FFC6000F42CC /* Frameworks */,
@@ -81,6 +83,7 @@
 		2AA424C62B4102F100E82BB6 /* House of Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				2A554C562C3E1E7C00D5437F /* SignUp.swift */,
 				2A7E899B2C3CEAE5006C11A7 /* Entry Screen.swift */,
 				2A9735D92B47CD7100A76648 /* Login.swift */,
 				2AA424C72B4102F100E82BB6 /* House_of_CanvasApp.swift */,
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AFBAE412C598E100047B84D /* Profile Screen.swift in Sources */,
 				2AA424CA2B4102F100E82BB6 /* ContentView.swift in Sources */,
 				2A554C572C3E1E7C00D5437F /* SignUp.swift in Sources */,
 				2AA424C82B4102F100E82BB6 /* House_of_CanvasApp.swift in Sources */,

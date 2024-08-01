@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct EntryScreen: View {
+    
     var body: some View {
         NavigationView {
             ZStack {

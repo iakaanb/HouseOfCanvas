@@ -10,7 +10,7 @@ import Firebase
 
 struct SignUp: View {
     @State private var fullName: String = "   "
-    @State private var username: String = "   "
+    @State private var email: String = "   "
     @State private var password: String = "   "
     
     var body: some View {
@@ -56,11 +56,11 @@ struct SignUp: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .inset(by: 1)
                                             .stroke(.black, lineWidth: 1))
-                                Text("Username")
+                                Text("Email Address")
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                TextField("  Username", text: $username)
+                                TextField("  Email Address", text: $email)
                                     .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
@@ -102,7 +102,7 @@ struct SignUp: View {
 //                            }
                             Button ("CREATE AN ACCOUNT") {
 //                                Task {
-                                    addUser(fullName: self.fullName, username: self.username, password: self.password)
+                                    addUser(fullName: self.fullName, email: self.email, password: self.password)
 //                                }
 //                                Text("hey")
                             }
@@ -126,9 +126,9 @@ struct SignUp: View {
         Spacer(minLength: 27)
         .navigationBarBackButtonHidden(true)
     }
-    func addUser(fullName: String, username: String, password: String) {
+    func addUser(fullName: String, email: String, password: String) {
             let usersDatabase = Firestore.firestore()
-            let userData = ["fullName": fullName, "username": username, "password": password] as [String : Any]
+            let userData = ["fullName": fullName, "email": email, "password": password] as [String : Any]
             let reference = usersDatabase.collection("Users").document()
             reference.setData(userData)
         //        { error in
