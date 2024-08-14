@@ -16,26 +16,38 @@ struct ProfileScreen: View {
     
     
     var body: some View {
-        VStack (spacing: -1){
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: .infinity, height: 103)
-                        .background(.black)
+        VStack (spacing: 3){
+//                HStack {
+//                    Rectangle()
+//                        .foregroundColor(.clear)
+//                        .frame(width: .infinity, height: 103)
+//                        .background(.black)
+//                    Image("Logo")
+//                        .resizable()
+//                        .frame(width: 161, height: 103)
+//                        .background(Color.black).frame(width: .infinity, height: 103)
+//                        .ignoresSafeArea()
+//                }
+//                .zIndex(3.0)
+//            Divider()
+//                .frame(minHeight: 0.75)
+//                .background(Color.black)
+//                ZStack {
+//                    Rectangle()
+//                    .foregroundColor(.clear)
+//                    .frame(width: .infinity, height: 163)
+//                    .background(Color(red: 0.64, green: 0.61, blue: 0.53))
+//                    .overlay(
+//                        Rectangle()
+//                            .inset(by: 0)
+//            .stroke(.black, lineWidth: 0.75))
+            Rectangle()
+                .background(.red).frame(width: .infinity, height: 104)
+                .overlay {
                     Image("Logo")
                         .resizable()
-                        .frame(width: 161, height: 103)
+                        .frame(width: 161, height: 104)
                 }
-                .zIndex(3.0)
-                ZStack {
-                    Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: .infinity, height: 163)
-                    .background(Color(red: 0.64, green: 0.61, blue: 0.53))
-                    .overlay(
-                        Rectangle()
-                            .inset(by: 0)
-                            .stroke(.black, lineWidth: 0.75))
                     VStack {
                         ZStack {
                             Circle()
@@ -47,8 +59,17 @@ struct ProfileScreen: View {
                         }
                         Text("Full Name").font(Font.largeTitle.weight(.regular))
                     }
-                }
+                .background(Color(red: 0.64, green: 0.61, blue: 0.53))
+                .ignoresSafeArea()
+            Divider()
+                .frame(minHeight: 0.75)
+                .background(Color.black)
             Spacer()
+            Text("My Requests").font(Font.title2.weight(.regular)).frame(alignment: .leading)
+            Divider()
+                .frame(minHeight: 0.75)
+                .background(Color.black)
+            
             VStack(alignment: .leading) {
 //            Group {
                 HStack() {
