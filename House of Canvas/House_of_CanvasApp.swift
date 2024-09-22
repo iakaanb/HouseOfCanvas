@@ -32,6 +32,7 @@ import Firebase
 struct House_of_CanvasApp: App {
   // register app delegate for Firebase setup
 //  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+//    @StateObject var dataManager = DataManager()
     
     init() {
         FirebaseApp.configure()
@@ -41,6 +42,7 @@ struct House_of_CanvasApp: App {
     WindowGroup {
       NavigationView {
         EntryScreen()
+//              .environmentObject(dataManager)
       }
     }
   }

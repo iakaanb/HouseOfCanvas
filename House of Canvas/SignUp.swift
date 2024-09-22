@@ -7,26 +7,35 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 struct SignUp: View {
-    @State private var fullName: String = "   "
-    @State private var email: String = "   "
-    @State private var password: String = "   "
+    @State private var fullName: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
+    @State private var isActive = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 400, height: 103)
-                        .background(.black)
-                    Image("Logo")
-                        .resizable()
-                        .frame(width: 161, height: 104)
-                }
-//                .position(x: .centerX)
-                    VStack (spacing: 7){
+            NavigationStack {
+//                ZStack {
+//                    Color(UIColor.lightGray)
+//                        .opacity(0.5)
+//                        .ignoresSafeArea()
+                VStack {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: .infinity, height: 104)
+                            .background(.black)
+                        Image("Logo")
+                            .resizable()
+                            .frame(width: 161, height: 104)
+                    }
+                    
+                    Spacer()
+
+                    VStack () {
                         Text("SIGN UP")
                             .font(Font.largeTitle.weight(.bold))
                             .foregroundColor(.black)
@@ -41,13 +50,13 @@ struct SignUp: View {
                                     RoundedRectangle(cornerRadius: 7)
                                         .inset(by: 2.50)
                                         .stroke(Color(red: 0.64, green: 0.61, blue: 0.53), lineWidth: 5.00))
-                            VStack (spacing: 14){
+                            VStack () {
                                 Text("Full Name")
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                TextField("  Full Name", text: $fullName)
-                                    .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
+                                TextField("Full Name", text: $fullName)
+                                    .padding(.horizontal, 12)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
                                     .background(Color(red: 0.64, green: 0.61, blue: 0.53))
@@ -56,12 +65,13 @@ struct SignUp: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .inset(by: 1)
                                             .stroke(.black, lineWidth: 1))
+                                    .padding(.bottom, 12)
                                 Text("Email Address")
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                TextField("  Email Address", text: $email)
-                                    .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
+                                TextField("Email Address", text: $email)
+                                    .padding(.horizontal, 12)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
                                     .background(Color(red: 0.64, green: 0.61, blue: 0.53))
@@ -70,12 +80,13 @@ struct SignUp: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .inset(by: 1)
                                             .stroke(.black, lineWidth: 1))
+                                    .padding(.bottom, 12)
                                 Text("Password")
                                     .font(Font.custom("Inter", size: 20).weight(.bold))
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 311, alignment: .leading)
-                                SecureField("  Password", text: $password)
-//                                    .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
+                                SecureField("Password", text: $password)
+                                    .padding(.horizontal, 12)
                                     .foregroundColor(.black)
                                     .frame(width: 311, height: 46)
                                     .background(Color(red: 0.64, green: 0.61, blue: 0.53))
@@ -84,28 +95,15 @@ struct SignUp: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .inset(by: 1)
                                             .stroke(.black, lineWidth: 1))
+                                    .padding(.bottom, 12)
                             }
-                    }
-//                        Button("CREATE AN ACCOUNT") {
-//                                            Task {      addUser(fullName: self.fullName, username: self.username, password: self.password)
-//                                            }
-//                                        }
-//                                        NavigationLink(destination: Login()) {
-//                                            Text("").hidden()
-////                                            Text("CREATE AN ACCOUNT")
-//                                        }
-                        
-                        NavigationLink(destination: Home()) {
-//                            Text("CREATE AN ACCOUNT")
-//                            Task {
-
-//                            }
-                            Button ("CREATE AN ACCOUNT") {
-//                                Task {
-                                    addUser(fullName: self.fullName, email: self.email, password: self.password)
-//                                }
-//                                Text("hey")
-                            }
+                        }
+                        Button ("CREATE AN ACCOUNT") {
+                            addUser(fullName: self.fullName, email: self.email, password: self.password)
+                            isActive = true
+                        }
+                        .navigationDestination(isPresented: $isActive) {
+                            Home()
                         }
                         .foregroundColor(.black)
                         .font(Font.title2.weight(.bold))
@@ -117,26 +115,35 @@ struct SignUp: View {
                                 .inset(by: 1)
                                 .stroke(.black, lineWidth: 2.5))
                         .padding(30)
-                }
-                .frame(maxWidth: 358, maxHeight: 844, alignment: .center)
-//                .navigationBarBackButtonHidden(true)
+                    }
+                    Spacer()
+
+//                }
+                .navigationBarBackButtonHidden(true)
+                .navigationTitle("")
             }
-//            .navigationBarBackButtonHidden(true)
         }
-        Spacer(minLength: 27)
-        .navigationBarBackButtonHidden(true)
+        .padding(.bottom, 27)
     }
     func addUser(fullName: String, email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Error creating user: \(error.localizedDescription)")
+                return
+            }
+            guard let user = result?.user else { return }
             let usersDatabase = Firestore.firestore()
-            let userData = ["fullName": fullName, "email": email, "password": password] as [String : Any]
-            let reference = usersDatabase.collection("Users").document()
-            reference.setData(userData)
-        //        { error in
-        //            if let error = error {
-        //                print(error.localizedDescription)
-        //            }
-                print("Checking")
+            let userData = ["fullName": fullName, "email": email, "password": password, "uid": user.uid]
+            let reference = usersDatabase.collection("Users").document(user.uid)
+            reference.setData(userData) { error in
+                if let error = error {
+                    print("Error saving user data: \(error.localizedDescription)")
+                }
+            }
+            print("User created successfully!")
         }
+        
+    }
 }
 
 #Preview {

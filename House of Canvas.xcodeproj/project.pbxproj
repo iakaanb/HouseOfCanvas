@@ -21,6 +21,9 @@
 		2AA424CC2B4102F300E82BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA424CB2B4102F300E82BB6 /* Assets.xcassets */; };
 		2AA424CF2B4102F300E82BB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA424CE2B4102F300E82BB6 /* Preview Assets.xcassets */; };
 		2AA424D62B41033200E82BB6 /* RequestAQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA424D52B41033200E82BB6 /* RequestAQuote.swift */; };
+		2AA81F1E2C6DEB34004D4C76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA81F1D2C6DEB34004D4C76 /* User.swift */; };
+		2AA81F202C6DEB3F004D4C76 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA81F1F2C6DEB3F004D4C76 /* Project.swift */; };
+		2AA81F222C6DEEC3004D4C76 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA81F212C6DEEC3004D4C76 /* DataManager.swift */; };
 		2AFBAE412C598E100047B84D /* Profile Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFBAE402C598E0F0047B84D /* Profile Screen.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,9 @@
 		2AA424CB2B4102F300E82BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AA424CE2B4102F300E82BB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2AA424D52B41033200E82BB6 /* RequestAQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAQuote.swift; sourceTree = "<group>"; };
+		2AA81F1D2C6DEB34004D4C76 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2AA81F1F2C6DEB3F004D4C76 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		2AA81F212C6DEEC3004D4C76 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2AFBAE402C598E0F0047B84D /* Profile Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile Screen.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +96,10 @@
 				2AA424C92B4102F100E82BB6 /* ContentView.swift */,
 				2A273DC02C4840B800CB54BD /* Home.swift */,
 				2AA424D52B41033200E82BB6 /* RequestAQuote.swift */,
+				2AA81F1D2C6DEB34004D4C76 /* User.swift */,
 				2AA424CB2B4102F300E82BB6 /* Assets.xcassets */,
+				2AA81F212C6DEEC3004D4C76 /* DataManager.swift */,
+				2AA81F1F2C6DEB3F004D4C76 /* Project.swift */,
 				2AA424CD2B4102F300E82BB6 /* Preview Content */,
 			);
 			path = "House of Canvas";
@@ -187,9 +196,12 @@
 				2AFBAE412C598E100047B84D /* Profile Screen.swift in Sources */,
 				2AA424CA2B4102F100E82BB6 /* ContentView.swift in Sources */,
 				2A554C572C3E1E7C00D5437F /* SignUp.swift in Sources */,
+				2AA81F202C6DEB3F004D4C76 /* Project.swift in Sources */,
 				2AA424C82B4102F100E82BB6 /* House_of_CanvasApp.swift in Sources */,
 				2AA424D62B41033200E82BB6 /* RequestAQuote.swift in Sources */,
+				2AA81F1E2C6DEB34004D4C76 /* User.swift in Sources */,
 				2A7E899C2C3CEAE5006C11A7 /* Entry Screen.swift in Sources */,
+				2AA81F222C6DEEC3004D4C76 /* DataManager.swift in Sources */,
 				2A9735DA2B47CD7100A76648 /* Login.swift in Sources */,
 				2A273DC12C4840B800CB54BD /* Home.swift in Sources */,
 			);
