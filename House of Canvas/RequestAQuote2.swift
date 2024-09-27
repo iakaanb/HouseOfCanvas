@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct RequestAQuote2: View {
-    @State private var fullName: String = "   "
-    @State private var projectName: String = "   "
+    var fullName: String
+    var projectName: String
+    var email: String
+    var phoneNum: String
+    var address: String
+    
     @State private var frame: String = "   "
     @State private var height: String = "   "
     @State private var width: String = "   "
@@ -19,6 +25,7 @@ struct RequestAQuote2: View {
     @State private var mocks: String = "   "
     @State private var mockSewnPleats: String = "   "
     @State private var isActive = false
+    @State private var submissionMessage: String = ""
 
     //    @State private var extraVar = "   "
     private let extraChoices = ["Extras?", "Spear Points", "No Side Valances", "Extensions or Cut Outs", "Premium Cloth", "Overlay One Side or Raised", "Bound Top & Bottom", "Bound Top, Bottom, & Raised", "Overlay/Applique Two Sides", "Feature Stripe", "Separate Valance", "Lace on Awnings", "Tack Bands/Tack Flaps", "Second Story Installation", "Pipe Frames", "Trusses", "Valance Stablizers", "Stretcher Bars", "Service Call", "Service Call w/ Trailer", "Trip Charge"]
@@ -150,6 +157,7 @@ struct RequestAQuote2: View {
                     .padding()
                     Button ("Submit") {
                         isActive = true
+                        createQuote()
                     }
                     .navigationDestination(isPresented: $isActive) {
                         ProfileScreen()
@@ -164,22 +172,78 @@ struct RequestAQuote2: View {
                             .inset(by: 1)
                             .stroke(.black, lineWidth: 2.5))
                     .padding()
+                    
+                    Text(submissionMessage)
+                        .foregroundColor(.green)
+                        .padding()
+                    
                     Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
-    func createQuote(email: String, password: String) {
-            Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                if let error = error {
-                    print("Error logging in: \(error.localizedDescription)")
-                    return
+    func createQuote() {
+        print("Creating quote...")
+        let db = Firestore.firestore()
+        guard let user = Auth.auth().currentUser else {
+            DispatchQueue.main.async {
+                submissionMessage = "Error: User not logged in."
+            }
+            return
+        }
+        print("User logged in: \(user.uid)")
+        
+        db.collection("Users").document(user.uid).getDocument { document, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    submissionMessage = "Error fetching user data: \(error.localizedDescription)"
                 }
-                isActive = true
+                print("Error fetching user data: \(error.localizedDescription)")
+                return
+            }
+
+            guard let document = document, document.exists,
+                  let data = document.data(), let username = data["username"] as? String else {
+                DispatchQueue.main.async {
+                    submissionMessage = "Error: Username not found."
+                }
+                print("Error: Username not found.")
+                return
+            }
+
+            let quoteData: [String: Any] = [
+                "fullName": fullName,
+                "projectName": projectName,
+                "frame": frame,
+                "height": height,
+                "width": width,
+                "extras": extras,
+                "others": others,
+                "functionals": functionals,
+                "mocks": mocks,
+                "mockSewnPleats": mockSewnPleats,
+                "username": username,
+                "timestamp": FieldValue.serverTimestamp()
+            ]
+            
+            db.collection("Quotes").addDocument(data: quoteData) { error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        submissionMessage = "Error: \(error.localizedDescription)"
+                    }
+                    print("Error adding document: \(error.localizedDescription)")
+                } else {
+                    DispatchQueue.main.async {
+                        submissionMessage = "Quote submitted successfully!"
+                        print("Quote submitted successfully!")
+                    }
+                }
             }
         }
+    }
+
 }
 
 #Preview {
-    RequestAQuote2()
+    RequestAQuote2(fullName: "Me", projectName: "Project1", email: "me@gmail.com", phoneNum: "4803536407", address: "301 SOmething Dr")
 }

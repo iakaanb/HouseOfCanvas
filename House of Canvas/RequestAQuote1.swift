@@ -53,28 +53,28 @@ struct RequestAQuote1: View {
 //                        .padding(.leading)
 //                        .padding(.bottom)
                     Text("Full Name")
-                        .font(Font.custom("Rubik", size: 17).weight(.light))
+                        .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Full Name", fieldVar: $fullName)
                     Text("Company/Project Name")
-                        .font(Font.custom("Rubik", size: 17).weight(.light))
+                        .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Company/Project Name", fieldVar: $projectName)
                     Text("Email Address")
-                        .font(Font.custom("Rubik", size: 17).weight(.light))
+                        .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Email Address", fieldVar: $email)
                     Text("Phone Number")
-                        .font(Font.custom("Rubik", size: 17).weight(.light))
+                        .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Phone Number", fieldVar: $phoneNum)
 
                     Text("Address")
-                        .font(Font.custom("Rubik", size: 17).weight(.light))
+                        .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Address", fieldVar: $address)
@@ -83,7 +83,7 @@ struct RequestAQuote1: View {
                         isActive = true
                     }
                     .navigationDestination(isPresented: $isActive) {
-                        RequestAQuote2()
+                        RequestAQuote2(fullName: fullName, projectName: projectName, email: email, phoneNum: phoneNum, address: address)
                     }
                     .foregroundColor(.black)
                     .font(Font.title.weight(.bold))
@@ -104,35 +104,35 @@ struct RequestAQuote1: View {
             Color(red: 0.85, green: 0.85, blue: 0.85)
                 .cornerRadius(5)
                 .padding(.horizontal, 16)
-                .frame(height: 30)
+                .frame(height: 50)
 
             TextField(fieldName, text: fieldVar)
                 .padding(.horizontal)
                 .padding(.vertical, 10)
-                .font(Font.custom("Rubik", size: 16).weight(.light))
+                .font(Font.custom("Rubik", size: 18).weight(.light))
                 .padding(.leading)
 
         }
     }
-    func addQuote(fullName: String, projName: String, email: String, phoneNum: String, address: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("Error creating user: \(error.localizedDescription)")
-                return
-            }
-            guard let user = result?.user else { return }
-            let usersDatabase = Firestore.firestore()
-            let userData = ["fullName": fullName, "email": email, "password": password, "uid": user.uid]
-            let reference = usersDatabase.collection("Users").document(user.uid)
-            reference.setData(userData) { error in
-                if let error = error {
-                    print("Error saving user data: \(error.localizedDescription)")
-                }
-            }
-            print("User created successfully!")
-        }
-        
-    }
+//    func addQuote(fullName: String, projName: String, email: String, phoneNum: String, address: String) {
+//        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+//            if let error = error {
+//                print("Error creating user: \(error.localizedDescription)")
+//                return
+//            }
+//            guard let user = result?.user else { return }
+//            let usersDatabase = Firestore.firestore()
+//            let userData = ["fullName": fullName, "email": email, "password": password, "uid": user.uid]
+//            let reference = usersDatabase.collection("Users").document(user.uid)
+//            reference.setData(userData) { error in
+//                if let error = error {
+//                    print("Error saving user data: \(error.localizedDescription)")
+//                }
+//            }
+//            print("User created successfully!")
+//        }
+//        
+//    }
 }
 
 

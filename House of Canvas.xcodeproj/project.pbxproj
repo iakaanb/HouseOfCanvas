@@ -73,7 +73,6 @@
 		2AA424BB2B4102F100E82BB6 = {
 			isa = PBXGroup;
 			children = (
-				2AFBAE402C598E0F0047B84D /* Profile Screen.swift */,
 				2AA424C62B4102F100E82BB6 /* House of Canvas */,
 				2AA424C52B4102F100E82BB6 /* Products */,
 				2A1AAF712C46FFC6000F42CC /* Frameworks */,
@@ -91,6 +90,7 @@
 		2AA424C62B4102F100E82BB6 /* House of Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				2AFBAE402C598E0F0047B84D /* Profile Screen.swift */,
 				2A554C562C3E1E7C00D5437F /* SignUp.swift */,
 				2A7E899B2C3CEAE5006C11A7 /* Entry Screen.swift */,
 				2A9735D92B47CD7100A76648 /* Login.swift */,
