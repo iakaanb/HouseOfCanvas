@@ -201,16 +201,9 @@ struct RequestAQuote2: View {
                 print("Error fetching user data: \(error.localizedDescription)")
                 return
             }
-
-            guard let document = document, document.exists,
-                  let data = document.data(), let username = data["username"] as? String else {
-                DispatchQueue.main.async {
-                    submissionMessage = "Error: Username not found."
-                }
-                print("Error: Username not found.")
-                return
-            }
-
+            
+            let userID = user.uid
+            
             let quoteData: [String: Any] = [
                 "fullName": fullName,
                 "projectName": projectName,
@@ -222,7 +215,7 @@ struct RequestAQuote2: View {
                 "functionals": functionals,
                 "mocks": mocks,
                 "mockSewnPleats": mockSewnPleats,
-                "username": username,
+                "userID": userID,
                 "timestamp": FieldValue.serverTimestamp()
             ]
             
