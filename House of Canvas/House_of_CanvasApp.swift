@@ -28,20 +28,21 @@ struct House_of_CanvasApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                TabView {
-                    EntryScreen()
-                        .tabItem {
-                            Label("Home", systemImage: "house")
-                        }
-                    RequestAQuote1()
-                        .tabItem {
-                            Label("Settings", systemImage: "gear")
-                        }
-                    ProfileScreen()
-                        .tabItem {
-                            Label("Settings", systemImage: "gear")
-                        }
-                }
+                EntryScreen()
+//                TabView {
+//                    
+//                        .tabItem {
+//                            Label("Home", systemImage: "house")
+//                        }
+//                    RequestAQuote1()
+//                        .tabItem {
+//                            Label("Home", systemImage: "house")
+//                        }
+//                    ProfileScreen()
+//                        .tabItem {
+//                            Label("Settings", systemImage: "gear")
+//                        }
+//                }
             }
         }
     }

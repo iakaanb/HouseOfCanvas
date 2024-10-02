@@ -39,6 +39,7 @@ struct RequestAQuote2: View {
             //                    Color(UIColor.lightGray)
             //                        .opacity(0.5)
             //                        .ignoresSafeArea()
+            
                 VStack {
                     VStack(spacing: -8) {
                         ZStack {
