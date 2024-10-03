@@ -56,7 +56,7 @@ struct RequestAQuote2: View {
                             .foregroundColor(Color(red: 0.64, green: 0.61, blue: 0.53))
                             .overlay {
                                 HStack {
-                                    Text("Request A Quote")  .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
+                                    Text("Project Details")  .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
                                 }
                                 .padding(.horizontal)
                             }
@@ -115,7 +115,7 @@ struct RequestAQuote2: View {
                 Text("Exterior")
                     .font(Font.custom("Rubik", size: 20).weight(.light))
                     .frame(maxWidth: 358, alignment: .leading)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 7)
                 Text("Functional")
                     .font(Font.custom("Rubik", size: 17).weight(.light))
                     .frame(maxWidth: 358, alignment: .leading)
@@ -161,7 +161,7 @@ struct RequestAQuote2: View {
                         createQuote()
                     }
                     .navigationDestination(isPresented: $isActive) {
-                        ProfileScreen()
+                        Home()
                     }
                     .foregroundColor(.black)
                     .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
@@ -174,13 +174,8 @@ struct RequestAQuote2: View {
                             .stroke(.black, lineWidth: 2.5))
                     .padding()
                     
-                    Text(submissionMessage)
-                        .foregroundColor(.green)
-                        .padding()
-                    
                     Spacer()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     func createQuote() {

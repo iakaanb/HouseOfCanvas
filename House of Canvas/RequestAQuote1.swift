@@ -38,15 +38,15 @@ struct RequestAQuote1: View {
                     .foregroundColor(Color(red: 0.64, green: 0.61, blue: 0.53))
                     .overlay {
                         HStack {
-                            Text("Request A Quote")                    .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
+                            Text("Customer Information") .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
                         }
                         .padding(.horizontal)
                     }
                 Divider()
                     .frame(minHeight: 2)
                     .background(Color.black)
+                Spacer()
             }
-        Spacer()
 //                    Text("Customer Contact Information")
 //                        .font(Font.custom("Rubik", size: 22).weight(.light))
 //                        .frame(maxWidth: .infinity, alignment: .leading)
@@ -104,6 +104,9 @@ struct RequestAQuote1: View {
                     Spacer()
             }
         }
+                            .navigationBarBackButtonHidden(true)
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
     }
     func inputField(fieldName: String, fieldVar: Binding<String>) -> some View {
         ZStack {

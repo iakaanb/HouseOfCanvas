@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Home: View {
     @State private var showPopover = false
+    @State private var showLogoutPopover = false
     @State private var isPlusPressed = false
     @State private var isActive = false
+    @State private var isActive2 = false
     @State private var showPopup = false
-
+    
     
     var body: some View {
         NavigationStack {
@@ -35,17 +38,57 @@ struct Home: View {
                     .foregroundColor(Color(red: 0.64, green: 0.61, blue: 0.53))
                     .overlay {
                         HStack {
-                            Image(systemName: "gear")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 25, height: 25)
-                                .padding(.trailing)
+//                            Image(systemName: "gear")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 25, height: 25)
+//                                .padding(.trailing)
                             Text("My Requests").font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
-                            Image(systemName: "person.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 25, height: 25)
-                                .padding(.leading)
+//                                .padding(.leading)
+                            
+                            
+                            Button(action: {
+                                showLogoutPopover.toggle()
+                            }) {
+                                Image(systemName: "person.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 23, height: 23)
+                                    .padding(.leading)
+                                    .foregroundColor(Color.black)
+                            }
+                            
+                            .popover(isPresented: $showLogoutPopover,
+                                     attachmentAnchor: .point(.topLeading),
+                                     arrowEdge: .top) {
+                                VStack {
+                                    Text("Logout")
+                                        .padding()
+                                        .font(Font.title2.weight(.bold))
+                                    HStack {Button("Confirm") {
+                                        logoutUser()
+                                        isActive2 = true
+                                        showLogoutPopover = false
+                                    }
+                                    .foregroundColor(Color.black)
+                                    .padding(.top)
+                                    .padding(.trailing)
+                                        Button("Cancel") {
+                                            showLogoutPopover = false
+                                        }
+                                        .padding(.top)
+                                        .padding(.leading)
+                                        .foregroundColor(Color.black)
+                                    }
+                                }
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .frame(minWidth: 300, minHeight: 150)
+                                    .presentationCompactAdaptation(.popover)
+                                
+                                //                        })
+                            }
+                            
                         }
                         .padding(.horizontal)
                     }
@@ -125,13 +168,26 @@ struct Home: View {
                 .navigationDestination(isPresented: $isActive) {
                     RequestAQuote1()
                 }
+                .navigationDestination(isPresented: $isActive2) {
+                    EntryScreen()
+                }
             }
             .animation(.easeInOut(duration: 0.5), value: showPopup)
+            //            .navigationBarBackButtonHidden(true)
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
-        .navigationTitle("")
-        .navigationBarHidden(true)
+        
+    }
+    //    }
+    
+    private func logoutUser() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError {
+            print("Error signing out: %@", signOutError)
         }
-//    }
+    }
 }
 
 #Preview {
