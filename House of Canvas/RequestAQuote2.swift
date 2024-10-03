@@ -41,7 +41,7 @@ struct RequestAQuote2: View {
             //                        .ignoresSafeArea()
             
                 VStack {
-                    VStack(spacing: -8) {
+                    VStack(spacing: 0) {
                         ZStack {
                             Rectangle()
                                 .foregroundColor(.clear)
@@ -51,19 +51,18 @@ struct RequestAQuote2: View {
                                 .resizable()
                                 .frame(width: 161, height: 104)
                         }
-                        ZStack{
-                            Rectangle()
-                                .fill(Color(red: 0.64, green: 0.61, blue: 0.53))
-                                .frame(width: .infinity, height: 50)
-                                .overlay(
-                                    Rectangle()
-                                        .inset(by: 1)
-                                        .stroke(.black, lineWidth: 2.5))
-                            Text("Request A Quote")
-                                .frame(alignment: .center)
-                                .font(Font.title.weight(.bold))
-                        }
-                        
+                        Rectangle()
+                            .frame(width: .infinity, height: 50)
+                            .foregroundColor(Color(red: 0.64, green: 0.61, blue: 0.53))
+                            .overlay {
+                                HStack {
+                                    Text("Request A Quote")  .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
+                                }
+                                .padding(.horizontal)
+                            }
+                        Divider()
+                            .frame(minHeight: 2)
+                            .background(Color.black)
                     }
                 Spacer()
                 Text("Frame")
@@ -116,6 +115,7 @@ struct RequestAQuote2: View {
                 Text("Exterior")
                     .font(Font.custom("Rubik", size: 20).weight(.light))
                     .frame(maxWidth: 358, alignment: .leading)
+                    .padding(.bottom, 10)
                 Text("Functional")
                     .font(Font.custom("Rubik", size: 17).weight(.light))
                     .frame(maxWidth: 358, alignment: .leading)
@@ -130,7 +130,7 @@ struct RequestAQuote2: View {
                 .cornerRadius(5)
                 
                 Text("Mock")
-                    .font(Font.custom("Rubik", size: 17).weight(.light))
+                    .font(Font.custom("Rubik", size: 18).weight(.light))
                     .frame(maxWidth: 358, alignment: .leading)
                 Picker("Mocks", selection: $mocks) {
                     ForEach(functionalAndMockChoices, id: \.self) { mock in
@@ -164,7 +164,7 @@ struct RequestAQuote2: View {
                         ProfileScreen()
                     }
                     .foregroundColor(.black)
-                    .font(Font.title.weight(.bold))
+                    .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
                     .frame(width: 358, height: 50)
                     .background(Color(red: 0.64, green: 0.61, blue: 0.53))
                     .cornerRadius(5)

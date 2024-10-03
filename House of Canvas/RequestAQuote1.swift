@@ -23,7 +23,7 @@ struct RequestAQuote1: View {
             //                        .ignoresSafeArea()
             
             VStack {
-            VStack(spacing: -8) {
+            VStack(spacing: 0) {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.clear)
@@ -33,19 +33,18 @@ struct RequestAQuote1: View {
                         .resizable()
                         .frame(width: 161, height: 104)
                 }
-                ZStack{
-                    Rectangle()
-                        .fill(Color(red: 0.64, green: 0.61, blue: 0.53))
-                        .frame(width: .infinity, height: 50)
-                        .overlay(
-                            Rectangle()
-                                .inset(by: 1)
-                                .stroke(.black, lineWidth: 2.5))
-                    Text("Request A Quote")
-                        .frame(alignment: .center)
-                        .font(Font.title.weight(.bold))
-                }
-                
+                Rectangle()
+                    .frame(width: .infinity, height: 50)
+                    .foregroundColor(Color(red: 0.64, green: 0.61, blue: 0.53))
+                    .overlay {
+                        HStack {
+                            Text("Request A Quote")                    .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .padding(.horizontal)
+                    }
+                Divider()
+                    .frame(minHeight: 2)
+                    .background(Color.black)
             }
         Spacer()
 //                    Text("Customer Contact Information")
@@ -58,28 +57,34 @@ struct RequestAQuote1: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Full Name", fieldVar: $fullName)
+                    .padding(.bottom, 10)
                     Text("Company/Project Name")
                         .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Company/Project Name", fieldVar: $projectName)
+                    .padding(.bottom, 10)
                     Text("Email Address")
                         .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Email Address", fieldVar: $email)
+                    .padding(.bottom, 10)
                     Text("Phone Number")
                         .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Phone Number", fieldVar: $phoneNum)
-
+                    .padding(.bottom, 10)
                     Text("Address")
                         .font(Font.custom("Rubik", size: 18).weight(.light))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                     inputField(fieldName: "Address", fieldVar: $address)
-                    Spacer()
+                    .padding(.bottom, 10)
+                Spacer()
+                Divider()
+                    .padding()
                     Button ("Next") {
                         isActive = true
                     }
@@ -87,7 +92,7 @@ struct RequestAQuote1: View {
                         RequestAQuote2(fullName: fullName, projectName: projectName, email: email, phoneNum: phoneNum, address: address)
                     }
                     .foregroundColor(.black)
-                    .font(Font.title.weight(.bold))
+                    .font(Font.title.weight(.bold)).frame(maxWidth: .infinity, alignment: .center)
                     .frame(width: 358, height: 50)
                     .background(Color(red: 0.64, green: 0.61, blue: 0.53))
                     .cornerRadius(5)
