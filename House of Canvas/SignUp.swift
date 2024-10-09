@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import FirebaseAuth
 
 struct SignUp: View {
     @State private var fullName: String = ""

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 
 struct ProfileScreen: View {
@@ -68,3 +67,8 @@ struct ProfileScreen: View {
 #Preview {
     ProfileScreen()
 }
+
+
+
+
+
